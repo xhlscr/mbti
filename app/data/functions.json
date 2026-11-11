@@ -1,0 +1,130 @@
+{
+  "ISTJ": {
+    "code": "ISTJ",
+    "dom": "Si",
+    "aux": "Te",
+    "tert": "Fi",
+    "inf": "Ne",
+    "note": "ISTJ 以经验和秩序（Si-Te）为核心，做事有条理、可预测。当面对突如其来的变化或不熟悉的抽象概念（Ne）时可能陷入焦虑。成长方向是适度发展 Ne，对可能性保持开放。"
+  },
+  "ISFJ": {
+    "code": "ISFJ",
+    "dom": "Si",
+    "aux": "Fe",
+    "tert": "Ti",
+    "inf": "Ne",
+    "note": "ISFJ 用经验（Si）和关怀（Fe）默默支持身边的人。劣势 Ne 可能在压力下表现为对未来的过度担忧。发展 Ne 有助于接受变化，减少不必要的焦虑。"
+  },
+  "INFJ": {
+    "code": "INFJ",
+    "dom": "Ni",
+    "aux": "Fe",
+    "tert": "Ti",
+    "inf": "Se",
+    "note": "INFJ 以洞察（Ni）和关怀（Fe）为核心，追求理想中的和谐与意义。劣势 Se 让他们容易\"活在脑子里\"，忽视身体和现实细节。发展 Se 有助于更好地扎根当下。"
+  },
+  "INTJ": {
+    "code": "INTJ",
+    "dom": "Ni",
+    "aux": "Te",
+    "tert": "Fi",
+    "inf": "Se",
+    "note": "INTJ 凭借 Ni-Te 构建战略并推动执行。劣势 Se 让他们容易忽视身体信号和即时环境。成长方向是适度发展 Se，平衡\"未来规划\"与\"当下体验\"。"
+  },
+  "ISTP": {
+    "code": "ISTP",
+    "dom": "Ti",
+    "aux": "Se",
+    "tert": "Ni",
+    "inf": "Fe",
+    "note": "ISTP 以 Ti-Se 分析问题、动手解决。劣势 Fe 让他们在人际情感方面显得疏离或笨拙。发展 Fe 有助于建立更温暖、可持续的关系。"
+  },
+  "ISFP": {
+    "code": "ISFP",
+    "dom": "Fi",
+    "aux": "Se",
+    "tert": "Ni",
+    "inf": "Te",
+    "note": "ISFP 以内心价值（Fi）和当下体验（Se）为核心，追求真实与美。劣势 Te 让他们在规划、执行上感到吃力。发展 Te 有助于将内心愿景付诸实践。"
+  },
+  "INFP": {
+    "code": "INFP",
+    "dom": "Fi",
+    "aux": "Ne",
+    "tert": "Si",
+    "inf": "Te",
+    "note": "INFP 以内心的价值观（Fi）为核心，通过直觉（Ne）探索各种可能性。当需要依赖逻辑和效率（Te）时可能感到吃力。成长方向是发展 Te，把理想转化为行动。"
+  },
+  "INTP": {
+    "code": "INTP",
+    "dom": "Ti",
+    "aux": "Ne",
+    "tert": "Si",
+    "inf": "Fe",
+    "note": "INTP 以 Ti-Ne 构建理论、探索概念。劣势 Fe 让他们在情感表达和人际和谐上感到困难。发展 Fe 有助于将智慧用于服务他人，建立更温暖的关系。"
+  },
+  "ESTP": {
+    "code": "ESTP",
+    "dom": "Se",
+    "aux": "Ti",
+    "tert": "Fe",
+    "inf": "Ni",
+    "note": "ESTP 以 Se-Ti 活在当下、快速行动。劣势 Ni 让他们在长期规划和深层意义思考上显得不足。发展 Ni 有助于平衡即时刺激与长远目标。"
+  },
+  "ESFP": {
+    "code": "ESFP",
+    "dom": "Se",
+    "aux": "Fi",
+    "tert": "Te",
+    "inf": "Ni",
+    "note": "ESFP 以 Se-Fi 活在当下、追求真实与乐趣。劣势 Ni 让他们难以深入思考和长期规划。发展 Ni 有助于在享受当下的同时，为未来做好准备。"
+  },
+  "ENFP": {
+    "code": "ENFP",
+    "dom": "Ne",
+    "aux": "Fi",
+    "tert": "Te",
+    "inf": "Si",
+    "note": "ENFP 以 Ne-Fi 探索可能、追求意义。劣势 Si 让他们在细节管理和坚持习惯上感到困难。发展 Si 有助于将热情转化为可持续的成果。"
+  },
+  "ENTP": {
+    "code": "ENTP",
+    "dom": "Ne",
+    "aux": "Ti",
+    "tert": "Fe",
+    "inf": "Si",
+    "note": "ENTP 以 Ne-Ti 探索概念、挑战观念。劣势 Si 让他们在细节和常规上容易疏漏。发展 Si 有助于把创新想法落实到可执行的系统中。"
+  },
+  "ESTJ": {
+    "code": "ESTJ",
+    "dom": "Te",
+    "aux": "Si",
+    "tert": "Ne",
+    "inf": "Fi",
+    "note": "ESTJ 以 Te-Si 建立秩序、高效执行。劣势 Fi 让他们在情感表达和个人价值反思上有所欠缺。发展 Fi 有助于更温和地对待自己和他人。"
+  },
+  "ESFJ": {
+    "code": "ESFJ",
+    "dom": "Fe",
+    "aux": "Si",
+    "tert": "Ne",
+    "inf": "Ti",
+    "note": "ESFJ 以 Fe-Si 照顾他人、维护和谐。劣势 Ti 让他们在客观分析和批评面前可能感到受伤。发展 Ti 有助于在关怀他人的同时，保持理性的边界。"
+  },
+  "ENFJ": {
+    "code": "ENFJ",
+    "dom": "Fe",
+    "aux": "Ni",
+    "tert": "Se",
+    "inf": "Ti",
+    "note": "ENFJ 以 Fe-Ni 激励他人、追求集体愿景。劣势 Ti 让他们在需要客观分析时可能陷入主观。发展 Ti 有助于在热情之外，建立更清晰的逻辑边界。"
+  },
+  "ENTJ": {
+    "code": "ENTJ",
+    "dom": "Te",
+    "aux": "Ni",
+    "tert": "Se",
+    "inf": "Fi",
+    "note": "ENTJ 以 Te-Ni 制定战略、推动执行。劣势 Fi 让他们在情感表达和个人价值反思上显得生硬。发展 Fi 有助于在追求效率的同时，建立更有温度的领导风格。"
+  }
+}

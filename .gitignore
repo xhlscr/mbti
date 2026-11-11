@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+*.sqlite3
+
+
+# 测试缓存（pytest 在沙箱里跑时可能留下不可删的目录）
+.pytest_cache/
+pytest-cache-files-*/
