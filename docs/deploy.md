@@ -7,20 +7,44 @@
 
 ## 1. 镜像里有什么
 
-`backend/Dockerfile` 做四件事：
+`backend/Dockerfile` 分四层：
 
 ```dockerfile
-FROM python:3.12-slim                    # 1. 基础镜像
-COPY requirements.txt ./                 # 2. 先装依赖（这层可缓存）
+FROM python:3.13-slim-bookworm            # 1. 基础镜像（与本地 venv 一致，固定发行版）
+RUN apt-get install tzdata ca-certificates #    时区与根证书（slim 默认 UTC）
+COPY requirements.txt ./                  # 2. 依赖层：只随 requirements 变化
 RUN pip install -r requirements.txt
-COPY app ./app                           # 3. 复制代码（工作目录直接可导入）
-COPY scripts ./scripts                   # 4. 复制运维脚本
-CMD uvicorn app.main:app --host 0.0.0.0 --port 8000
+COPY --chown=appuser app ./app            # 3. 代码层：改代码只重建这两行
+COPY --chown=appuser scripts ./scripts
+USER appuser                              # 4. 非 root 运行
+CMD uvicorn app.main:app --workers 2 --proxy-headers ...
 ```
 
-**不带 `--reload`**（那是开发用的），容器内是单进程前台运行，靠 Docker 的 `restart: unless-stopped` 保活。
+几个刻意的选择：
+
+| 选择 | 原因 |
+|---|---|
+| `requirements.txt` 而非 `pip install .` | 不把项目装进 site-packages，避免和 `/srv/app/app` 两份副本 |
+| 先 COPY requirements 再 COPY 代码 | 改代码不会让依赖层失效，重建从 60s 降到 5s |
+| 非 root（uid 10001） | 容器逃逸时拿不到 root；应用只读文件系统，不需要写权限 |
+| `--proxy-headers --forwarded-allow-ips "*"` | 反代后面要靠 X-Forwarded-For 拿真实 IP，否则限流会把所有人当成同一个 IP |
+| `--workers 2` | 用满 2 核；**已知取舍**：内存态限流器每进程一份，实际每 IP 上限约 2 倍（40 次/小时），当前接受 |
+
+**不带 `--reload`**（那是开发用的），靠 Docker 的 `restart: unless-stopped` 保活。
 
 镜像里**不包含** `pyproject.toml`、`tests/`、`backend/.env`——依赖来自 `requirements.txt`，配置来自 compose 注入的环境变量。
+
+### 1.1 `.dockerignore` 必须存在
+
+`backend/.dockerignore` 排除了 `.venv/`（97MB）、`__pycache__/`、`.idea/`、`tests/`。
+**没有它每次构建都要把这 97MB 传给 Docker daemon**，构建慢且占磁盘。
+
+改完 Dockerfile 后自检：
+
+```bash
+docker build -t mbti-api:test backend/ 2>&1 | head -5
+# 第一行 "transferring context" 应该在几 MB 以内
+```
 
 ---
 
