@@ -61,3 +61,8 @@ class RateLimited(DomainError):
 class UnsupportedQuestionType(DomainError):
     status_code = 500
     code = "unsupported_question_type"
+
+
+class InvalidAnswer(DomainError):
+    status_code = 400
+    code = "invalid_answer"

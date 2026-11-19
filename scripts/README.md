@@ -1,6 +1,7 @@
 # scripts · 内容与题库流水线
 
-四个脚本，按「源文件 → 内容 JSON → SQL / 数据库」一条线走完，没有第五个。
+四个内容脚本，按「源文件 → 内容 JSON → SQL / 数据库」一条线走完，没有第五个。
+另有一个运维脚本 `cleanup_sessions.py`（清理过期会话），不属于内容流水线。
 
 ```
 根目录 *.md                 app/data/*.json                sql/*.sql                PostgreSQL
@@ -36,6 +37,29 @@ python scripts/publish_bank.py --dry-run
 
 # 线上追加/更新题目（会生成新版本，不是覆盖）
 python scripts/publish_bank.py
+```
+
+## 运维脚本：清理过期会话
+
+`cleanup_sessions.py` 用于防止被刷出大量未完成会话：
+
+```bash
+cd backend
+
+# 只统计，不删
+python scripts/cleanup_sessions.py --days 1 --dry-run
+
+# 删除 1 天前仍未完成的会话
+python scripts/cleanup_sessions.py --days 1
+
+# 慎用：连已完成的历史会话一起清（历史分享链接会失效）
+python scripts/cleanup_sessions.py --days 180 --purge-finished --dry-run
+```
+
+建议挂 cron 每天低峰跑一次：
+
+```cron
+0 4 * * * cd /srv/mbti/backend && .venv/bin/python scripts/cleanup_sessions.py --days 1
 ```
 
 ## 两条路径别混用
