@@ -1,5 +1,7 @@
 """结果与类型内容 schema。"""
 
+from typing import Any
+
 from pydantic import BaseModel, Field
 
 from app.schemas.common import Dim
@@ -31,3 +33,4 @@ class ResultOut(BaseModel):
     total: int
     type: TypeProfileOut
     functions: FuncStackOut
+    celebrity: dict[str, Any] | None = None   # 历史上的你；无匹配时为 None
