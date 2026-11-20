@@ -9,7 +9,7 @@ from app.core.database import get_db
 from app.core.exceptions import ResultNotFound
 from app.models import Result
 from app.schemas.result import FuncStackOut, ResultOut, TypeProfileOut
-from app.services import result_celebrity
+from app.services.result_celebrity import ensure_snapshot as ensure_celebrity_snapshot
 from app.services.content_loader import type_profile
 
 router = APIRouter(prefix="/results", tags=["results"])
@@ -30,5 +30,5 @@ def get_result(share_id: str, db: Session = Depends(get_db)) -> ResultOut:
         total=result.total,
         type=TypeProfileOut(**{k: v for k, v in profile.items() if k != "functions"}),
         functions=FuncStackOut(**profile["functions"]),
-        celebrity=result_celebrity.ensure_snapshot(db, result),
+        celebrity=ensure_celebrity_snapshot(db, result),
     )

@@ -11,7 +11,7 @@ from datetime import datetime, timezone
 from typing import TYPE_CHECKING, Mapping, Sequence
 
 from app.core.exceptions import SessionExpired
-from app.services import result_celebrity
+from app.services.result_celebrity import ensure_snapshot as ensure_celebrity_snapshot
 from app.services.scoring import aggregate
 
 if TYPE_CHECKING:
@@ -98,5 +98,5 @@ def submit(db: "Session", session: "TestSession", answers: Mapping[str, int]) ->
     db.refresh(result)
 
     # 名人匹配算一次并落快照；失败不影响主结算（服务内部已吞异常）。
-    result_celebrity.ensure_snapshot(db, result)
+    ensure_celebrity_snapshot(db, result)
     return result
